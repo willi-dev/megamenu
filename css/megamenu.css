@@ -1,0 +1,89 @@
+/* #container-menu{
+	padding-left:0;
+	padding-right:0;
+}
+.megadropdown{
+	width:100%;
+}
+.megadropdown li{;
+	list-style-type:none;
+}
+.list_megamenu{
+	left:0;
+	right:0;
+}
+.block_megamenu{
+	width:inherit;
+	left:0;
+	right:0;
+}
+
+
+ul.megadropdown li.is_megamenu .dropdown-menu{
+	margin-left: 0;
+	padding-left: 0;
+	background: #F8F8F8;
+	display: none;
+}
+ul.megadropdown li.is_megamenu:hover .dropdown-menu{
+	left:0;
+	display: block;
+	position: absolute;
+	z-index: 100;
+} */
+#container-menu{
+	background: #fff;
+}
+#megadropdown .nav,
+#megadropdown .collapse,
+#megadropdown .dropup,
+#megadropdown .dropdown {
+  position: static;
+}
+#megadropdown .container {
+  position: relative;
+}
+#megadropdown .dropdown-menu {
+  left: auto;
+}
+#megadropdown .df-block-megamenu {
+  	padding: 20px 20px;
+}
+#megadropdown .list_megamenu, .dropdown-menu{
+	background: #F8F8F8;
+}
+#megadropdown .dropdown.df-is-megamenu .dropdown-menu {
+	
+  	left: 0;
+  	right: 0;
+}
+#megadropdown .dropdown.df-is-megamenu:hover .dropdown-menu{
+	left:0;
+	right:0;
+	display: block;
+	position:absolute;
+	z-index: 100;
+}
+#megadropdown .dropdown.df-is-not-megamenu .dropdown-menu{
+
+	padding:10px 10px;
+}
+#megadropdown .dropdown.df-is-not-megamenu .dropdown-menu > li > a{
+	padding:3px 3px;
+}
+#megadropdown .dropdown.df-is-not-megamenu:hover .dropdown-menu{
+	display: block;
+	position: absolute;
+	z-index: 100;
+}
+.row_next_prev{
+	height:30px;
+	padding: 4px 30px 0px 30px;
+}
+.df-megamenu-nav-sub > li.active{
+	background: #eee;
+}
+.df-megamenu-nav-sub > li a, .df-megamenu-nav-sub > li.active a{
+	color: #666;
+}
+
