@@ -6,7 +6,7 @@
 	 * @since       1.0
 	 * @return      void
 	*/
-class md_walker extends Walker_Nav_Menu {
+class megamenu_walker extends Walker_Nav_Menu {
 
 	function start_lvl(&$output,  $depth = 0, $args= array()) {	
 		$indent        	= str_repeat( "\t", $depth ); 

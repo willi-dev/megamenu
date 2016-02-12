@@ -1,7 +1,11 @@
 <?php 
 /*
- *
+ * Class: df_megamenu
  */
+
+include_once('df_custom_walker_front.php'); // front end menu generates here!
+
+include_once('df_custom_walker_admin.php'); // add custom field to admin menu panel
 
 class df_megamenu {
 	var $is_mobile = true; // if mobile
@@ -110,8 +114,8 @@ class df_megamenu {
     		array(
     			'theme_location' 	=> 'primary', 
 				'menu_id' 			=> 'df-primary-megadropdown-menu',
-    			'menu' 			=> 'main',  // md_walker class for megamenu
-				'walker' 		=> new md_walker, // md_walker for megamenu 
+    			'menu' 			=> 'main',  // megamenu_walker class for megamenu
+				'walker' 		=> new megamenu_walker, // megamenu_walker for megamenu 
 				'menu_class' 	=> 'nav navbar-nav df-megadropdown-menu'
     			)
     	);
@@ -122,7 +126,7 @@ class df_megamenu {
 	 * @param -
 	 */
 	function df_megamenu_load_style() {
-		wp_register_style('megamenu-style', get_template_directory_uri().'/css/megamenu.css' );
+		wp_register_style('megamenu-style', get_template_directory_uri().'/inc/megamenu/css/megamenu.css' );
 		wp_enqueue_style('megamenu-style');
 	}
 
@@ -131,9 +135,7 @@ class df_megamenu {
 	 * @param -
 	 */
 	function df_megamenu_load_script() {
-		// wp_register_script('megamenu-js', plugins_url('megadropdownmenu/js/megamenuscript.js'));
-		// wp_enqueue_script('megamenu-js');
-		wp_enqueue_script('megamenu-js', get_template_directory_uri(). '/js/megamenuscript.js', array('jquery'), '1.0', true );
+		wp_enqueue_script('megamenu-js', get_template_directory_uri().'/inc/megamenu/js/megamenu.js', array('jquery'), '1.0', true );
 		wp_localize_script( 'megamenu-js', 'ajax_script', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 	}
 
@@ -622,10 +624,4 @@ class df_megamenu {
 }
 
 // instatiate plugin's class
-new megadropdown();
-
-// front end menu generates here!
-include_once('custom_walker.php');
-
-// add custom field to admin menu panel
-include_once('edit_custom_walker.php');
+// new megadropdown();
