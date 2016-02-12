@@ -204,7 +204,7 @@ class df_megamenu {
 				$buffer_items[] = $item;
 
 				// generate wp post
-				$new_item = $this->generate_post(); // generate menu item
+				$new_item = $this->df_generate_post(); // generate menu item
 				$new_item->is_mega_menu = true;
 				$new_item->menu_item_parent = $item->ID;
 				$new_item->cat_id = $megadropdown_menu_cat; // category id
@@ -411,11 +411,11 @@ class df_megamenu {
 	}
 
 	/**
-	 * generate_post
+	 * df_generate_post
 	 * @param -
 	 * @return WP_Post()
 	 */
-	function generate_post() {
+	function df_generate_post() {
         $post = new stdClass;
         $post->ID = '0';
         $post->post_author = '';
