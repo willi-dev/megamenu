@@ -12,7 +12,8 @@ class megamenu_walker extends Walker_Nav_Menu {
 		$indent        	= str_repeat( "\t", $depth ); 
 		$class_names	= 'dropdown-menu';
 		// build html
-		$output .= "\n" . $indent . '<ul class="' . $class_names . '">' . "\n";
+		$output .= "\n" . $indent . '<ul class="' . $class_names . ' ul-'.$depth.'">' . "\n";
+
 		// $output .= '<div><a href="#">Prev</a> | <a href="#">Next</a></div>';
 	}
 
@@ -28,7 +29,7 @@ class megamenu_walker extends Walker_Nav_Menu {
        	
        	$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 
-       	$classes[] = 'menu-item-' . $item->ID;
+       	$classes[] = 'menu-item-' . $item->ID . '-'.$depth;
 
        	// $classes[] = ($has_children) ? 'dropdown' : '';
        

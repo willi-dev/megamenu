@@ -12,7 +12,7 @@ class df_megamenu {
 
 	var $current_page = 1; // Default page number
 	var $found_posts; // found_posts
-	var $total_pages; // total_pages
+	var $total_pages; // set_total_pages
 	/**
 	 * Constructor
 	 */
@@ -42,6 +42,8 @@ class df_megamenu {
 
    		add_action( 'wp_ajax_nopriv_getPrevPage', array($this, 'getPrevPage') );
    		add_action( 'wp_ajax_getPrevPage', array($this, 'getPrevPage') );
+
+   		add_action( 'df_generate_megamenu', array($this, 'df_generate_megamenu') );
 	}
 	// end of constructor 
 
@@ -113,12 +115,69 @@ class df_megamenu {
     	register_nav_menus(
     		array(
     			'theme_location' 	=> 'primary', 
-				'menu_id' 			=> 'df-primary-megadropdown-menu',
-    			'menu' 			=> 'main',  // megamenu_walker class for megamenu
-				'walker' 		=> new megamenu_walker, // megamenu_walker for megamenu 
-				'menu_class' 	=> 'nav navbar-nav df-megadropdown-menu'
-    			)
+				'menu_id' 			=> 'df-primary-menu-megadropdown' , 
+				'menu' 				=> 'main',  // megamenu_walker class for megamenu
+				'walker' 			=> new megamenu_walker, // megamenu_walker for megamenu 
+				'menu_class' 		=> 'nav navbar-nav df-megadropdown',
+				'container_class' 	=> 'collapse navbar-collapse',
+				'container_id'		=> 'container-menu'
+    		)
     	);
+    }
+
+    /**
+     * df_generate_megamenu
+     * @param -
+     * @return $out
+     */
+    function df_generate_megamenu(){
+		echo '<div class="navbar-header">';
+		echo '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#container-menu" aria-expanded="false">';
+		echo '<span class="sr-only">Toggle navigation</span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>';
+		echo '</button>';
+		echo '</div>';
+		echo '<div id="container-menu" class="collapse navbar-collapse">';
+
+		if(class_exists('megamenu_walker')){
+
+			$params_menu =  array(
+						'theme_location' 	=> 'primary', 
+						'menu_id' 			=> 'df-primary-menu-megadropdown' , 
+						'menu' 				=> 'main',  // megamenu_walker class for megamenu
+						'walker' 			=> new megamenu_walker, // megamenu_walker for megamenu 
+						'menu_class' 		=> 'nav navbar-nav df-megadropdown',
+						'container'			=> false
+						// 'container_class' 	=> 'collapse navbar-collapse',
+						// 'container_id'		=> 'container-menu'
+			);
+
+
+			// echo wp_nav_menu( $params_menu ); 
+		}else{
+			$params_menu = array(
+						'theme_location' 	=> 'primary', 
+						'menu_id' 			=> 'primary-menu',
+						'container' 		=> false
+						// 'container_class' 	=> 'collapse navbar-collapse',
+						// 'container_id' 		=> 'container-menu'
+				);
+			// echo wp_nav_menu( $params_menu ); 
+		}
+		echo wp_nav_menu( $params_menu );
+
+		// generate search icon
+		echo '<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="#" data-toggle="modal" data-target=".df-modal-lg">
+						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					</a>
+				</li>
+			</ul>';
+
+		echo '</div>';
     }
 
 	/**
