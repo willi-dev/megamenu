@@ -4,7 +4,7 @@ jQuery(document).ready(function() {
 
     jQuery('#page').hide().fadeIn();
 
-    var urlWP = ajax_script.ajaxurl;
+    var urlWP = ajax_megamenu.ajaxurl;
 
     var tmpData = {};
     var tmpInnerData = {};
