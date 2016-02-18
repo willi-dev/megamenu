@@ -1,4 +1,12 @@
+
+
 jQuery(document).ready(function() {
+
+    jQuery('.df-megamenu-nav-sub a').hover(function(e){
+        e.preventDefault();
+        jQuery('.tab-pane').removeClass('active');
+        jQuery(this).tab('show');
+    });
 
     jQuery(".df-loading").hide();
 
@@ -746,4 +754,5 @@ jQuery(document).ready(function() {
     // function checkTmpOuterData(){
 
     // }
+
 });
