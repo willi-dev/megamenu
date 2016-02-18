@@ -4,7 +4,6 @@
  */
 
 include_once('df_custom_walker_front.php'); // front end menu generates here!
-
 include_once('df_custom_walker_admin.php'); // add custom field to admin menu panel
 
 class df_megamenu {
@@ -20,10 +19,8 @@ class df_megamenu {
 		// add_action( 'init', array($this, 'register_menu'));
 
 		if(is_admin()) {
-
 			// add action for save custom field
 			add_action('wp_update_nav_menu_item', array($this, 'df_update_custom_category'), 10, 3);
-
 			// add filter for edit menu walker (admin page)
 			add_filter('wp_edit_nav_menu_walker', array($this, 'df_edit_nav_menu_walker'), 10, 2);
 		}
@@ -37,11 +34,11 @@ class df_megamenu {
 		// add action for script js
 		add_action('wp_enqueue_scripts', array( $this, 'df_megamenu_load_script'));
 
-   		add_action( 'wp_ajax_nopriv_getNextPage', array($this, 'getNextPage') );
-   		add_action( 'wp_ajax_getNextPage', array($this, 'getNextPage') );
+   		add_action( 'df_ajax_handler_nopriv_getNextPage', array($this, 'getNextPage') );
+   		add_action( 'df_ajax_handler_getNextPage', array($this, 'getNextPage') );
 
-   		add_action( 'wp_ajax_nopriv_getPrevPage', array($this, 'getPrevPage') );
-   		add_action( 'wp_ajax_getPrevPage', array($this, 'getPrevPage') );
+   		add_action( 'df_ajax_handler_nopriv_getPrevPage', array($this, 'getPrevPage') );
+   		add_action( 'df_ajax_handler_getPrevPage', array($this, 'getPrevPage') );
 
    		add_action( 'df_generate_megamenu', array($this, 'df_generate_megamenu') );
 	}
@@ -195,7 +192,7 @@ class df_megamenu {
 	 */
 	function df_megamenu_load_script() {
 		wp_enqueue_script('megamenu-js', get_template_directory_uri().'/inc/megamenu/js/megamenu.js', array('jquery'), '1.0', true );
-		wp_localize_script( 'megamenu-js', 'ajax_script', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+		wp_localize_script( 'megamenu-js', 'ajax_megamenu', array( 'ajaxurl' => get_template_directory_uri() .'/inc/df_ajax_handler.php' ) );
 	}
 
 	/*
@@ -682,5 +679,4 @@ class df_megamenu {
 
 }
 
-// instatiate plugin's class
-// new megadropdown();
+new df_megamenu();
