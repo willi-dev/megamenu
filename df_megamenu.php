@@ -319,11 +319,11 @@ class df_megamenu {
 					$new_item->title .= '<div class="col-md-3 df-subcat-stack">';
 					$new_item->title .= '<ul class="nav nav-stacked df-megamenu-nav-sub" id="megamenu-'.esc_attr( $megadropdown_menu_cat ).'-'.esc_attr( $no_item ).'">';
 					$new_item->title .= '<li class="active">';
-					$new_item->title .= '<a  data-toggle="tab" href="#df-pane-'.esc_attr( $megadropdown_menu_cat ).'-'.esc_attr( $no_item ).'">All</a>';
+					$new_item->title .= '<a href="#df-pane-'.esc_attr( $megadropdown_menu_cat ).'-'.esc_attr( $no_item ).'">All</a>';
 					$new_item->title .= '</li>';
 					foreach($sub_cat as $sc){
 						$new_item->title .= '<li class="">';
-							$new_item->title .= '<a data-toggle="tab" href="#df-pane-'.esc_attr( $sc->cat_ID ).'-'.esc_attr( $no_item ).'" class="">'.$sc->cat_name.'</a>';
+							$new_item->title .= '<a href="#df-pane-'.esc_attr( $sc->cat_ID ).'-'.esc_attr( $no_item ).'" class="">'.$sc->cat_name.'</a>';
 						$new_item->title .= '</li>';
 					}
 					$new_item->title .= '</ul>';
