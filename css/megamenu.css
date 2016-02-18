@@ -86,7 +86,7 @@ ul.megadropdown li.is_megamenu:hover .dropdown-menu{
 .df-megamenu-nav-sub > li a, .df-megamenu-nav-sub > li.active a{
 	color: #666;
 }
-/*.df-subcat-stack{
+.df-subcat-stack{
 	max-height: 240px;
 	overflow: auto;
-}*/
+}
