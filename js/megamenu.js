@@ -5,7 +5,9 @@ jQuery(document).ready(function() {
     jQuery('.df-megamenu-nav-sub a').hover(function(e){
         e.preventDefault();
         jQuery('.tab-pane').removeClass('active');
+        tabContentSelector = jQuery(this).attr('href');
         jQuery(this).tab('show');
+        jQuery(tabContentSelector).addClass('active').fadeIn('slow');
     });
 
     jQuery(".df-loading").hide();
