@@ -3,10 +3,10 @@
  * Class: df_megamenu
  */
 
-include_once('df_custom_walker_front.php'); // front end menu generates here!
-include_once('df_custom_walker_admin.php'); // add custom field to admin menu panel
+include_once('df-custom-walker-front.php'); // front end menu generates here!
+include_once('df-custom-walker-admin.php'); // add custom field to admin menu panel
 
-class df_megamenu {
+class DF_Megamenu {
 	var $is_mobile = true; // if mobile
 
 	var $current_page = 1; // Default page number
@@ -113,8 +113,8 @@ class df_megamenu {
     		array(
     			'theme_location' 	=> 'primary', 
 				'menu_id' 			=> 'df-primary-menu-megadropdown' , 
-				'menu' 				=> 'main',  // megamenu_walker class for megamenu
-				'walker' 			=> new megamenu_walker, // megamenu_walker for megamenu 
+				'menu' 				=> 'main',  
+				'walker' 			=> new DF_Megamenu_Walker, // DF_Megamenu_Walker for megamenu 
 				'menu_class' 		=> 'nav navbar-nav df-megadropdown',
 				'container_class' 	=> 'collapse navbar-collapse',
 				'container_id'		=> 'container-menu'
@@ -138,13 +138,13 @@ class df_megamenu {
 		echo '</div>';
 		echo '<div id="container-menu" class="collapse navbar-collapse">';
 
-		if(class_exists('megamenu_walker')){
+		if(class_exists('DF_Megamenu_Walker')){
 
 			$params_menu =  array(
 						'theme_location' 	=> 'primary', 
 						'menu_id' 			=> 'df-primary-menu-megadropdown' , 
-						'menu' 				=> 'main',  // megamenu_walker class for megamenu
-						'walker' 			=> new megamenu_walker, // megamenu_walker for megamenu 
+						'menu' 				=> 'main',  
+						'walker' 			=> new DF_Megamenu_Walker, // DF_Megamenu_Walker for megamenu 
 						'menu_class' 		=> 'nav navbar-nav df-megadropdown',
 						'container'			=> false
 						// 'container_class' 	=> 'collapse navbar-collapse',
@@ -182,7 +182,8 @@ class df_megamenu {
 	 * @param -
 	 */
 	function df_megamenu_load_style() {
-		wp_register_style('megamenu-style', get_template_directory_uri().'/inc/megamenu/css/megamenu.css' );
+		// wp_register_style('megamenu-style', get_template_directory_uri().'/inc/df-core/df-megamenu/css/megamenu.css' );
+		wp_register_style('megamenu-style', get_template_directory_uri().'/inc/df-core/asset/css/df-megamenu.css' );
 		wp_enqueue_style('megamenu-style');
 	}
 
@@ -191,8 +192,9 @@ class df_megamenu {
 	 * @param -
 	 */
 	function df_megamenu_load_script() {
-		wp_enqueue_script('df_megamenu_js', get_template_directory_uri().'/inc/megamenu/js/megamenu.js', array('jquery'), '1.0', true );
-		wp_localize_script( 'df_megamenu_js', 'ajax_megamenu', array( 'ajaxurl' => get_template_directory_uri() .'/inc/df_ajax_handler.php' ) );
+		// wp_enqueue_script('df_megamenu_js', get_template_directory_uri().'/inc/df-core/df-megamenu/js/megamenu.js', array('jquery'), '1.0', true );
+		wp_enqueue_script('df_megamenu_js', get_template_directory_uri().'/inc/df-core/asset/js/df-megamenu.js', array('jquery'), '1.0', true );
+		wp_localize_script( 'df_megamenu_js', 'ajax_megamenu', array( 'ajaxurl' => get_template_directory_uri() .'/inc/df-core/df-ajax-handler.php' ) );
 	}
 
 	/*
@@ -679,4 +681,4 @@ class df_megamenu {
 
 }
 
-new df_megamenu();
+new DF_Megamenu();
