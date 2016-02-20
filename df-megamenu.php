@@ -40,6 +40,7 @@ class DF_Megamenu {
    		add_action( 'df_ajax_handler_nopriv_getPrevPage', array($this, 'getPrevPage') );
    		add_action( 'df_ajax_handler_getPrevPage', array($this, 'getPrevPage') );
 
+   		// call in df_framework?
    		add_action( 'df_generate_megamenu', array($this, 'df_generate_megamenu') );
 	}
 	// end of constructor 
@@ -122,6 +123,10 @@ class DF_Megamenu {
     	);
     }
 
+  //   function df_call_megamenu(){
+
+		// do_action('df_generate_megamenu');
+  //   }
     /**
      * df_generate_megamenu
      * @param -
@@ -682,3 +687,11 @@ class DF_Megamenu {
 }
 
 new DF_Megamenu();
+
+/** 
+ * df_generate_megamenu
+ * do_action('df_generate_megamenu')
+ */
+function df_call_megamenu(){
+	do_action('df_generate_megamenu');
+}
