@@ -191,8 +191,8 @@ class df_megamenu {
 	 * @param -
 	 */
 	function df_megamenu_load_script() {
-		wp_enqueue_script('megamenu-js', get_template_directory_uri().'/inc/megamenu/js/megamenu.js', array('jquery'), '1.0', true );
-		wp_localize_script( 'megamenu-js', 'ajax_megamenu', array( 'ajaxurl' => get_template_directory_uri() .'/inc/df_ajax_handler.php' ) );
+		wp_enqueue_script('df_megamenu_js', get_template_directory_uri().'/inc/megamenu/js/megamenu.js', array('jquery'), '1.0', true );
+		wp_localize_script( 'df_megamenu_js', 'ajax_megamenu', array( 'ajaxurl' => get_template_directory_uri() .'/inc/df_ajax_handler.php' ) );
 	}
 
 	/*
